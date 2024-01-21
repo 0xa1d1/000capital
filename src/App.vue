@@ -6,10 +6,6 @@
         <span class="title">{{ section.name }}</span>
         <span class="ticker"></span>
       </a>
-      <a class="" href="javascript:">
-        <span class="title">Connect</span>
-        <span class="ticker"></span>
-      </a>
     </nav>
     <div id="container" class="container"></div>
   </header>
@@ -17,7 +13,7 @@
     <div class="section home section-with-link" id="home">
       <div class="section-inner container px-4">
         <div class="text-center px-4 px-md-0"><img class="img-fluid" src="./assets/hero.svg"></div>
-        <div class="text-center subheading mt-5 pt-4">BUSY ADDING ZEROS</div>
+        <div class="text-center subheading mt-5 pt-4" ref="scrambleText">WE'RE BUSY ADDING ZEROS</div>
 
         <a href="mailto:venture@000.capital" class="section-link">
           <span class="text-end">Get Funding</span>
@@ -164,8 +160,8 @@ export default {
         { file: 'bittm.jpg', x: 'Bittm_', job: 'Analyst' },
         { file: 'fizzi.png', x: 'Fizziohh', job: 'Analyst' },
         { file: 'jack.jpg', x: 'jackhaute', job: 'Analyst' },
-        { file: 'george.png', x: 'farmyicky', job: 'Yield Farmer' },
-        { file: 'pingpong.png', x: 'DegenMAYC', job: 'NFT Degen' },
+        { file: 'goku.jpeg', x: 'imCryptoGoku', job: 'Analyst' },
+        { file: 'pingpong.png', x: 'DegenMAYC', job: 'NFT Researcher' },
         { file: 'popiwops.jpeg', x: 'popiwops', job: 'Trader' },
         { file: 'selca.jpg', x: 's3lc4', job: 'Trader' },
         { file: 'sofa.png', x: 'sofacestmoi', job: 'Trader' },
@@ -178,11 +174,40 @@ export default {
   mounted() {
     window.addEventListener('scroll', this.onScroll);
     this.onScroll();
+    this.scrambleText();
   },
   beforeUnmount() {
     window.removeEventListener('scroll', this.onScroll);
   },
   methods: {
+    scrambleText() {
+      const element = this.$refs.scrambleText;
+      const originalText = element.innerText;
+      let scrambledText = '';
+      const scrambleDuration = 1500; // Duration of the effect in milliseconds
+      const scrambleIntervalTime = 30; // Time between each scramble in milliseconds
+      let elapsedTime = 0;
+
+      const scrambleInterval = setInterval(() => {
+        scrambledText = '';
+
+        for (let i = 0; i < originalText.length; i++) {
+          scrambledText += this.randomChar();
+        }
+
+        element.innerText = scrambledText;
+
+        elapsedTime += scrambleIntervalTime;
+        if (elapsedTime >= scrambleDuration) {
+          clearInterval(scrambleInterval);
+          element.innerText = originalText; // Reset to original text after scrambling
+        }
+      }, scrambleIntervalTime);
+    },
+    randomChar() {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[{]};:\'",<.>/?';
+      return chars.charAt(Math.floor(Math.random() * chars.length));
+    },
     onScroll() {
       const sections = document.querySelectorAll('.section');
       const scrollPosition = window.scrollY + window.innerHeight / 3; // Adjusted to a third of the viewport
