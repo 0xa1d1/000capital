@@ -12,8 +12,8 @@
   <main id="main" data-bs-spy="scroll" data-bs-target="#main-navigation">
     <div class="section home section-with-link" id="home">
       <div class="section-inner container px-4">
-        <div class="text-center px-4 px-md-0"><img class="img-fluid" src="./assets/hero.svg"></div>
-        <div class="text-center subheading mt-5 pt-4" ref="scrambleText">WE'RE BUSY ADDING ZEROS</div>
+        <div class="text-center px-4 px-md-0"><img class="img-fluid" src="./assets/hero.svg" @load="pageReady = true;"></div>
+        <div class="text-center subheading mt-5 pt-4" ref="scrambleText" style="height:20px">WE'RE BUSY ADDING ZEROS</div>
 
         <a href="mailto:venture@000.capital" class="section-link">
           <span class="text-end">Get Funding</span>
@@ -148,6 +148,7 @@ export default {
   data() {
     return {
       currentSection: null,
+      pageReady: false,
       sections: [
         { name: 'Home', id: 'home' },
         { name: 'Members', id: 'members' },
@@ -184,7 +185,7 @@ export default {
       const element = this.$refs.scrambleText;
       const originalText = element.innerText;
       let scrambledText = '';
-      const scrambleDuration = 1500; // Duration of the effect in milliseconds
+      const scrambleDuration = 1000; // Duration of the effect in milliseconds
       const scrambleIntervalTime = 30; // Time between each scramble in milliseconds
       let elapsedTime = 0;
 
@@ -234,5 +235,3 @@ export default {
   }
 }
 </script>
-
-<style></style>
