@@ -9,7 +9,7 @@
     </nav>
     <div id="container" class="container"></div>
   </header>
-  <main id="main" data-bs-spy="scroll" data-bs-target="#main-navigation">
+  <main id="main">
     <div class="section home section-with-link" id="home">
       <div class="section-inner container px-4">
         <div class="text-center px-4 px-md-0">
@@ -164,21 +164,24 @@ export default {
       ],
       members: [
         { file: 'dtk.png', x: '0x_eth_', job: 'Fund & Risk Management' },
-        { file: 'gfl.jpeg', x: 'gofuckinglong', job: 'Biz Dev' },
+        { file: 'gfl.png', x: 'gofuckinglong', job: 'Biz Dev' },
         { file: 'zezima.png', x: 'zezima_233', job: 'Angel' },
         { file: 'goku.jpeg', x: 'imCryptoGoku', job: 'Analyst' },
         { file: 'bittm.jpg', x: 'Bittm_', job: 'Analyst' },
-        { file: 'jack.jpg', x: 'jackhaute', job: 'Analyst' },
+        { file: 'jack.png', x: 'jackhaute', job: 'Analyst' },
         { file: 'fizzi.png', x: 'Fizziohh', job: 'Analyst' },
         { file: 'pingpong.png', x: 'DegenMAYC', job: 'NFT Researcher' },
-        { file: 'popiwops.jpeg', x: 'popiwops', job: 'Trader' },
-        { file: 'selca.jpg', x: 's3lc4', job: 'Trader' },
+        { file: 'popiwops.png', x: 'popiwops', job: 'Trader' },
+        { file: 'selca.png', x: 's3lc4', job: 'Trader' },
         { file: 'sofa.png', x: 'sofacestmoi', job: 'Trader' },
         { file: 'stu.png', x: 'stu_vrai_', job: 'Pet' },
         { file: 'cdec.png', x: 'c_de_c', job: 'Data Engineer' },
         { file: 'rxbt.png', x: '0rxbt', job: 'Dev' }
       ]
     }
+  },
+  created() {
+    this.preloadMemberImages();
   },
   mounted() {
     window.addEventListener('scroll', this.onScroll);
@@ -189,6 +192,13 @@ export default {
     window.removeEventListener('scroll', this.onScroll);
   },
   methods: {
+    preloadMemberImages() {
+      this.members.forEach(member => {
+        const img = new Image();
+        img.src = require(`@/assets/pfps/${member.file}`);
+        member.img = img;
+      });
+    },
     scrambleText() {
       const element = this.$refs.scrambleText;
       const originalText = element.innerText;

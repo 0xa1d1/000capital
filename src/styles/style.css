@@ -16088,6 +16088,7 @@ body {
 .subheading {
     font: normal normal normal 19px/23px Fira Sans;
     letter-spacing: 12px;
+    font-variant-numeric: tabular-nums;
     color: #BBB4B4;
     text-transform: uppercase;
 }
