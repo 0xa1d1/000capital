@@ -23,7 +23,7 @@
         </div>
         <div class="text-center subheading mt-5 pt-4" ref="scrambleText" style="height:20px">WE'RE BUSY ADDING ZEROS</div>
 
-        <a href="mailto:venture@000.capital" class="section-link">
+        <a href="https://hffyawljjws.typeform.com/to/LtgZRqx7" target="_blank" class="section-link">
           <span class="text-end">Get Funding</span>
           <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#fff"
             stroke-width="1">
